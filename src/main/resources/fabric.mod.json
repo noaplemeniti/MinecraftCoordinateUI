@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "coordinate-display",
+  "version": "1.0.0",
+  "name": "Coordinate Display",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["coordinatedisplay.CoordinateDisplay"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": "*"
+  }
+}
