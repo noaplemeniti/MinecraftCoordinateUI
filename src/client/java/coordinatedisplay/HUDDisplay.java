@@ -10,13 +10,17 @@ public class HUDDisplay {
         this.state = state;
     }
     public void render(DrawContext context, PlayerEntity player, TextRenderer textRenderer) {
-        String coords = String.format("X: %.1f Y: %.1f Z: %.1f", state.x, state.y, state.z);
+        String coordx = String.format("X: %.0f %s", state.x, state.orientationx);
+        String coordy  = String.format("Y: %.0f", state.y);
+        String coordz = String.format("Z: %.0f %s", state.z, state.orientationz);
         String orientation = "Facing: " + state.orientationString(player.getYaw());
 
         int x = 10;
         int y = 10;
-        context.fill(5, 5, 150, 35, 0x80000000);
-        context.drawText(textRenderer, coords, x, y, 0xFFFFFFFF, false);
-        context.drawText(textRenderer, orientation, x, y + 10, 0xFFFFFFFF, false);
+        context.fill(5, 5, 50, 65, 0x80000000);
+        context.drawText(textRenderer, coordx, x, y, 0xFFFFFFFF, false);
+        context.drawText(textRenderer, coordy, x, y + 10, 0xFFFFFFFF, false);
+        context.drawText(textRenderer, coordz, x, y + 20, 0xFFFFFFFF, false);
+        context.drawText(textRenderer, orientation, x, y + 30, 0xFFFFFFFF, false);
     }
 }

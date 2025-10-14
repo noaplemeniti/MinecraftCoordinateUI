@@ -5,7 +5,8 @@
   "name": "Coordinate Display",
   "environment": "client",
   "entrypoints": {
-    "client": ["coordinatedisplay.CoordinateDisplay"]
+    "client": ["coordinatedisplay.CoordinateDisplay"],
+    "modmenu": ["coordinatedisplay.CoordinateDisplayModMenu"]
   },
   "depends": {
     "fabricloader": ">=0.15.0",
