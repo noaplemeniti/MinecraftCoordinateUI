@@ -7,6 +7,11 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.text.Text;
 
 public class CoordinateDisplay implements ClientModInitializer {
 
@@ -30,6 +35,16 @@ public class CoordinateDisplay implements ClientModInitializer {
         STATE.z = p.getZ();
         STATE.orientation = STATE.calculateOrientation(p.getYaw());
         STATE.setOrientationStrings(p.getYaw());
+        RegistryEntry<Biome> entry = p.getEntityWorld().getBiome(p.getBlockPos());
+        RegistryKey<Biome> key = entry.getKey().orElse(null);
+        if (key != null) {
+            Identifier id = key.getValue();
+            String transKey = "biome." + id.getNamespace() + "." + id.getPath();
+            STATE.biome = Text.translatable(transKey);
+        } else {
+            STATE.biome = Text.literal("Unknown Biome");
+        }
+
     }
 
 	private void renderHud(DrawContext ctx, RenderTickCounter tickCounter) {

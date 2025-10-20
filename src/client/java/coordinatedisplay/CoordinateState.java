@@ -1,11 +1,14 @@
 package coordinatedisplay;
 
+import net.minecraft.text.Text;
+
 public class CoordinateState {
     public double x, y, z;
     public boolean toggle = true;
     public double orientation;
     public String orientationx;
     public String orientationz;
+    public Text biome;
     
 
     public String orientationString(double yaw) {
